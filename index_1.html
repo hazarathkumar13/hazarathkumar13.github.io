@@ -1,0 +1,743 @@
+<title>Hazarath Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f6f4ee;
+    --paper-raised:#fbfaf6;
+    --ink:#16212e;
+    --ink-soft:#2f3d4c;
+    --muted:#5c6672;
+    --line:#d9d3c2;
+    --line-strong:#b9b19c;
+    --navy:#1d3a5f;
+    --navy-soft:#2c4d78;
+    --brass:#8f6d34;
+    --brass-soft:#c9a869;
+    --brass-tint:#efe4cc;
+    --shadow: 0 1px 2px rgba(22,33,46,0.06), 0 8px 24px -12px rgba(22,33,46,0.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10151c;
+      --paper-raised:#161d26;
+      --ink:#e8e4d9;
+      --ink-soft:#c7c1b1;
+      --muted:#8b93a0;
+      --line:#2a3542;
+      --line-strong:#3b4856;
+      --navy:#87acdc;
+      --navy-soft:#a9c6e9;
+      --brass:#d3b06d;
+      --brass-soft:#e6cd94;
+      --brass-tint:#2a2416;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px -14px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10151c;
+    --paper-raised:#161d26;
+    --ink:#e8e4d9;
+    --ink-soft:#c7c1b1;
+    --muted:#8b93a0;
+    --line:#2a3542;
+    --line-strong:#3b4856;
+    --navy:#87acdc;
+    --navy-soft:#a9c6e9;
+    --brass:#d3b06d;
+    --brass-soft:#e6cd94;
+    --brass-tint:#2a2416;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 10px 30px -14px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding-inline:24px;
+  }
+
+  a{color:var(--navy);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; }
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:500;
+  }
+
+  h1,h2,h3{
+    font-family:"Libre Caslon Text", Georgia, "Times New Roman", serif;
+    font-weight:700;
+    color:var(--ink);
+    text-wrap:balance;
+    margin:0;
+  }
+
+  /* ---------- Nav ---------- */
+  .site-nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding-block:14px;
+  }
+  .nav-name{
+    font-family:"Libre Caslon Text", serif;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .nav-links{
+    display:flex;
+    gap:22px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-decoration:none;
+    white-space:nowrap;
+    padding-block:4px;
+    border-bottom:1px solid transparent;
+    transition:color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover{ color:var(--ink); border-color:var(--brass-soft); }
+  .print-btn{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.75rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--navy);
+    background:transparent;
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    padding:7px 12px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:background 0.15s ease, border-color 0.15s ease;
+  }
+  .print-btn:hover{ background:var(--paper-raised); border-color:var(--brass); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding-block:64px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .hero-kicker .rule{ height:1px; width:36px; background:var(--brass); }
+  .hero h1{
+    font-size:clamp(2.5rem, 4vw + 1.2rem, 4.1rem);
+    line-height:1.04;
+    margin-bottom:10px;
+  }
+  .hero-role{
+    font-size:clamp(1.05rem, 1.1vw + 0.7rem, 1.35rem);
+    color:var(--navy-soft);
+    font-style:italic;
+    font-family:"Libre Caslon Text", serif;
+    margin-bottom:22px;
+  }
+  .hero-summary{
+    max-width:62ch;
+    color:var(--ink-soft);
+    font-size:1.03rem;
+    margin-bottom:26px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .contact-row a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--line-strong); }
+  .contact-row a:hover{ color:var(--navy); border-color:var(--brass); }
+  .contact-row span.sep{ color:var(--line-strong); }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise 0.7s ease forwards;
+  }
+  .reveal.d1{ animation-delay:0.05s; }
+  .reveal.d2{ animation-delay:0.16s; }
+  .reveal.d3{ animation-delay:0.27s; }
+  .reveal.d4{ animation-delay:0.38s; }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  /* ---------- Section shell ---------- */
+  section{ padding-block:52px; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{ font-size:clamp(1.5rem, 1.1vw + 1.1rem, 1.9rem); }
+  .section-num{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- Metrics ---------- */
+  .metrics{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .metric{
+    background:var(--paper-raised);
+    padding:22px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .metric .num{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:clamp(1.5rem, 1.6vw + 1rem, 2.1rem);
+    font-weight:600;
+    color:var(--navy);
+    font-variant-numeric:tabular-nums;
+  }
+  .metric .label{
+    font-size:0.82rem;
+    color:var(--muted);
+    line-height:1.4;
+  }
+
+  /* ---------- Chart ---------- */
+  .chart-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:28px clamp(16px, 3vw, 34px) 22px;
+    box-shadow:var(--shadow);
+  }
+  .chart-title{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  .chart-card svg{ width:100%; height:auto; display:block; overflow:visible; }
+  .chart-note{
+    margin-top:14px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    max-width:60ch;
+  }
+
+  /* ---------- Expertise ---------- */
+  .expertise-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:26px 40px;
+  }
+  .expertise-group h3{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:5px 10px;
+    white-space:nowrap;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{ display:flex; flex-direction:column; gap:40px; }
+  .role{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:28px;
+    position:relative;
+    padding-left:0;
+  }
+  .role-meta{
+    padding-left:20px;
+    border-left:2px solid var(--brass-soft);
+  }
+  .role-dates{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.78rem;
+    color:var(--muted);
+    display:block;
+    margin-bottom:6px;
+  }
+  .role-company{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  .role h3{
+    font-size:1.2rem;
+    margin-bottom:2px;
+  }
+  .role ul{
+    margin:14px 0 0;
+    padding-left:18px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+  .role li{ margin-bottom:9px; }
+  .role li::marker{ color:var(--brass); }
+  .role li b, .role li strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Projects ---------- */
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .project-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:20px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    transition:border-color 0.15s ease, transform 0.15s ease;
+  }
+  .project-card:hover{ border-color:var(--brass-soft); transform:translateY(-2px); }
+  .project-card h3{ font-size:1.05rem; }
+  .project-card p{ margin:0; color:var(--ink-soft); font-size:0.9rem; }
+
+  /* ---------- Education ---------- */
+  .edu-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    padding:20px 0;
+  }
+  .edu-row h3{ font-size:1.15rem; margin-bottom:4px; }
+  .edu-row .edu-sub{ color:var(--muted); font-size:0.9rem; }
+  .edu-stat{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.9rem;
+    color:var(--navy);
+    text-align:right;
+    white-space:nowrap;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{ padding-block:48px 60px; }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .footer-note{
+    max-width:44ch;
+    color:var(--muted);
+    font-size:0.88rem;
+  }
+  .footer-contacts{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.85rem;
+  }
+  .footer-contacts a{ color:var(--ink-soft); text-decoration:none; }
+  .footer-contacts a:hover{ color:var(--navy); }
+  .footer-rule{ height:1px; background:var(--line); margin-bottom:32px; }
+
+  /* ---------- Print ---------- */
+  @media print{
+    .site-nav{ position:static; backdrop-filter:none; }
+    .print-btn{ display:none; }
+    section{ break-inside:avoid; padding-block:26px; }
+    .reveal{ opacity:1 !important; transform:none !important; animation:none !important; }
+    body{ background:#fff; color:#111; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:720px){
+    .metrics{ grid-template-columns:repeat(2, 1fr); }
+    .expertise-grid{ grid-template-columns:1fr; }
+    .project-grid{ grid-template-columns:1fr; }
+    .role{ grid-template-columns:1fr; }
+    .role-meta{ border-left:none; border-top:2px solid var(--brass-soft); padding-left:0; padding-top:10px; }
+  }
+</style>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="nav-name" href="#top">Hazarath Kumar</a>
+    <ul class="nav-links">
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="print-btn" id="printBtn" type="button">Save as PDF</button>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker reveal d1">
+      <span class="rule" aria-hidden="true"></span>
+      <span class="eyebrow">Chennai, India</span>
+    </div>
+    <h1 class="reveal d2">Hazarath Kumar</h1>
+    <p class="hero-role reveal d3">Senior Software Engineer &mdash; GPU &amp; HPC Performance Specialist</p>
+    <p class="hero-summary reveal d3">
+      GPU and high-performance computing engineer with 4+ years delivering measurable performance gains across
+      GPU compute, computer vision, image processing, and video codec engineering &mdash; including an 83% cut in
+      end-to-end GPU processing runtime. Took ownership of implementing the Multi-Agent Kernel Generator (MAKG),
+      an AI-assisted tool for automated GPU kernel generation, from architecture through implementation. Works
+      the full stack: from CUDA and
+      HIP/ROCm kernel tuning up through pybind11 Python APIs and cross-team delivery.
+    </p>
+    <div class="contact-row reveal d4">
+      <a href="mailto:hazarathkumar.maddisetty@gmail.com">hazarathkumar.maddisetty@gmail.com</a>
+      <span class="sep">/</span>
+      <span>+91 91824 70820</span>
+      <span class="sep">/</span>
+      <a href="https://www.linkedin.com/in/hazarath-kumar-maddisetty-54b6a0225/" target="_blank" rel="noopener">linkedin.com/in/hazarath-kumar-maddisetty</a>
+      <span class="sep">/</span>
+      <a href="https://github.com/HazarathKumarM" target="_blank" rel="noopener">github.com/HazarathKumarM</a>
+      <span class="sep">/</span>
+      <a href="https://github.com/hazarathkumar13" target="_blank" rel="noopener">github.com/hazarathkumar13</a>
+    </div>
+  </div>
+</header>
+
+<section id="metrics" aria-label="Career metrics">
+  <div class="wrap">
+    <div class="metrics">
+      <div class="metric">
+        <span class="num">83%</span>
+        <span class="label">GPU runtime cut on a re-architected HIP resampling kernel</span>
+      </div>
+      <div class="metric">
+        <span class="num">4+</span>
+        <span class="label">Years in GPU &amp; HPC engineering, in production codebases</span>
+      </div>
+      <div class="metric">
+        <span class="num">6</span>
+        <span class="label">Production kernels &amp; tooling projects shipped</span>
+      </div>
+      <div class="metric">
+        <span class="num">x265</span>
+        <span class="label">HEVC contributions: film grain, SEI messaging, AQ tuning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benchmark" aria-label="Kernel performance benchmark">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>The 83% number, in minutes</h2>
+      <span class="section-num mono">HIP Resampling Kernel</span>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">End-to-end runtime &mdash; before / after re-architecture</div>
+      <svg viewBox="0 0 760 190" role="img" aria-labelledby="chartTitle chartDesc">
+        <title id="chartTitle">Runtime comparison bar chart</title>
+        <desc id="chartDesc">Before: 3 hours 22 minutes (202 minutes). After: 1 hour 13 minutes (73 minutes). An 83 percent reduction.</desc>
+        <!-- gridlines + axis -->
+        <g class="mono" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="120" y1="20" x2="120" y2="150"></line>
+            <line x1="253" y1="20" x2="253" y2="150"></line>
+            <line x1="386" y1="20" x2="386" y2="150"></line>
+            <line x1="519" y1="20" x2="519" y2="150"></line>
+            <line x1="652" y1="20" x2="652" y2="150"></line>
+          </g>
+          <text x="120" y="168" text-anchor="middle">0</text>
+          <text x="253" y="168" text-anchor="middle">50m</text>
+          <text x="386" y="168" text-anchor="middle">100m</text>
+          <text x="519" y="168" text-anchor="middle">150m</text>
+          <text x="652" y="168" text-anchor="middle">200m</text>
+        </g>
+        <!-- before bar: 202 min -->
+        <g>
+          <text x="20" y="52" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="var(--ink-soft)">Before</text>
+          <rect x="120" y="34" width="268.66" height="26" rx="2" fill="var(--line-strong)"></rect>
+          <text x="396" y="52" font-family="IBM Plex Mono, monospace" font-size="13" fill="var(--ink)" font-weight="600">3h 22m</text>
+        </g>
+        <!-- after bar: 73 min -->
+        <g>
+          <text x="20" y="107" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="var(--ink-soft)">After</text>
+          <rect x="120" y="89" width="97.09" height="26" rx="2" fill="var(--navy)"></rect>
+          <text x="225" y="107" font-family="IBM Plex Mono, monospace" font-size="13" fill="var(--navy)" font-weight="600">1h 13m</text>
+        </g>
+        <!-- delta callout -->
+        <g font-family="IBM Plex Mono, monospace">
+          <text x="120" y="140" font-size="12" fill="var(--brass)" font-weight="600">&#8722;83% via occupancy analysis, memory coalescing &amp; async execution</text>
+        </g>
+      </svg>
+      <p class="chart-note">
+        Re-architected the kernel's occupancy profile and memory access pattern and moved execution to an async
+        pipeline, cutting a 3h 22m end-to-end job to 1h 13m without added hardware.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Core Expertise</h2>
+      <span class="section-num mono">01</span>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-group">
+        <h3>GPU Programming</h3>
+        <div class="tag-row">
+          <span class="tag">CUDA</span><span class="tag">HIP / ROCm</span>
+          <span class="tag">GPU Kernel Development</span><span class="tag">Multi-GPU Systems</span>
+        </div>
+      </div>
+      <div class="expertise-group">
+        <h3>Performance Optimization</h3>
+        <div class="tag-row">
+          <span class="tag">AVX2</span><span class="tag">SIMD</span>
+          <span class="tag">Kernel Tuning</span><span class="tag">Memory Coalescing</span>
+          <span class="tag">Occupancy Analysis</span>
+        </div>
+      </div>
+      <div class="expertise-group">
+        <h3>Languages</h3>
+        <div class="tag-row">
+          <span class="tag">C++</span><span class="tag">C</span>
+          <span class="tag">Python</span><span class="tag">pybind11</span>
+        </div>
+      </div>
+      <div class="expertise-group">
+        <h3>Domains</h3>
+        <div class="tag-row">
+          <span class="tag">Computer Vision</span><span class="tag">Image Processing</span>
+          <span class="tag">Video Codecs (x265/HEVC)</span><span class="tag">HPC</span><span class="tag">AI Tooling</span>
+        </div>
+      </div>
+      <div class="expertise-group">
+        <h3>Libraries &amp; Frameworks</h3>
+        <div class="tag-row">
+          <span class="tag">ROCm Performance Primitives</span><span class="tag">rocAL</span>
+          <span class="tag">OpenCV</span><span class="tag">CMake</span>
+        </div>
+      </div>
+      <div class="expertise-group">
+        <h3>Tools &amp; Practices</h3>
+        <div class="tag-row">
+          <span class="tag">Git</span><span class="tag">CI / Test Pipelines</span>
+          <span class="tag">Code Review</span><span class="tag">Technical Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-num mono">02</span>
+    </div>
+    <div class="timeline">
+      <div class="role">
+        <div class="role-meta">
+          <span class="role-dates">Jul 2025 &ndash; Present</span>
+          <span class="role-company">MulticoreWare, Chennai</span>
+        </div>
+        <div>
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;">
+            <h3>Senior Software Engineer</h3>
+            <span class="tag" style="border-color:var(--brass-soft); color:var(--brass);">Featured &mdash; MAKG</span>
+          </div>
+          <ul>
+            <li><b>Took ownership of implementing the Multi-Agent Kernel Generator (MAKG)</b> &mdash; an AI-assisted tool for automated GPU kernel generation, carrying it from architecture through implementation under the team lead's direction. Researched open-source agent frameworks and academic literature, incorporated team feedback, and drove the generation pipeline forward, bringing AI-assisted tooling into the GPU kernel workflow.</li>
+            <li>Developed production GPU kernels &mdash; <b>Histogram Equalize, Solarize, Median Filter</b> &mdash; for a GPU-accelerated computer vision library, extending image-processing quality and pipeline coverage.</li>
+            <li>Resolved a critical broadcasting performance regression ahead of a key SOW delivery deadline, directly enabling the team to ship on time.</li>
+            <li>Implemented broadcasting support, border condition handling, and filter-related features, coordinating with teammates to unblock parallel workstreams.</li>
+            <li>Ran comparative analysis between OpenCV and internal GPU implementations, identifying root causes of performance gaps and informing optimization priorities.</li>
+            <li>Led the initial <b>PyRPP</b> integration &mdash; learned pybind11 and added Python binding support, opening high-performance GPU kernels to Python-facing workflows.</li>
+            <li>Diagnosed and resolved multiple build and CMake configuration issues, improving build stability across environments.</li>
+            <li>Supported project closure &mdash; pull request reviews, review-comment resolution, and quality handoff at end of lifecycle.</li>
+            <li>Mentored junior engineers and interns on GPU kernel development, ROCm tooling, and performance profiling.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role">
+        <div class="role-meta">
+          <span class="role-dates">Jul 2022 &ndash; Jun 2025</span>
+          <span class="role-company">MulticoreWare, Chennai</span>
+        </div>
+        <div>
+          <h3>Software Engineer</h3>
+          <ul>
+            <li>Achieved an <b>83% runtime reduction</b> on a HIP-based GPU resampling kernel &mdash; 3h 22m to 1h 13m &mdash; through kernel profiling, memory access pattern optimization, and parallelism tuning.</li>
+            <li>Implemented film grain extraction and SEI messaging support in <b>x265 (HEVC)</b>, enabling film grain synthesis compliance for streaming and broadcast workflows.</li>
+            <li>Contributed Adaptive Quantization (AQ) model improvements to x265, enhancing perceptual video quality and bitrate efficiency across content types.</li>
+            <li>Improved multi-GPU training stability in a GPU-accelerated data loading and augmentation pipeline, reducing training failures in large-scale deep learning workflows.</li>
+            <li>Expanded GPU decode capability by porting motion compensation modules to GPU, building hands-on depth in GPU-accelerated video decoding pipelines.</li>
+            <li>Strengthened CI/test pipelines and technical documentation, improving build reliability and onboarding efficiency.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Key Projects</h2>
+      <span class="section-num mono">03</span>
+    </div>
+    <div class="project-grid">
+      <div class="project-card" style="border-color:var(--brass-soft); grid-column:1 / -1;">
+        <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
+          <h3>Multi-Agent Kernel Generator (MAKG)</h3>
+          <span class="tag" style="border-color:var(--brass-soft); color:var(--brass);">Featured</span>
+        </div>
+        <p>An AI-powered tool for automated GPU kernel generation, built around a multi-agent architecture. Took ownership of implementing it, carrying the build from architecture through implementation under the team lead's direction &mdash; researching open-source agent frameworks and academic literature, incorporating team feedback into the generation pipeline, and driving it forward &mdash; bringing AI-assisted tooling directly into GPU kernel development.</p>
+      </div>
+      <div class="project-card">
+        <h3>HIP Resampling Kernel</h3>
+        <p>Re-architected a HIP-based resampling kernel via occupancy analysis, memory coalescing, and async execution strategies &mdash; runtime cut from 3h 22m to 1h 13m.</p>
+      </div>
+      <div class="project-card">
+        <h3>PyRPP &mdash; Python Bindings for GPU CV</h3>
+        <p>Led initial pybind11 integration exposing GPU-accelerated computer vision kernels as a Python API, opening high-performance GPU processing to data science and ML teams.</p>
+      </div>
+      <div class="project-card">
+        <h3>GPU Kernel Suite &mdash; Computer Vision Library</h3>
+        <p>Implemented Histogram Equalize, Solarize, Median Filter, and supporting broadcasting/border-condition features in a production GPU CV library; resolved a critical performance regression ahead of SOW delivery.</p>
+      </div>
+      <div class="project-card">
+        <h3>Motion Compensation GPU Port (CUDA)</h3>
+        <p>Ported motion compensation logic to CUDA for GPU-accelerated H.265 video decoding, building deep experience in GPU-based video pipeline architecture.</p>
+      </div>
+      <div class="project-card">
+        <h3>OpenCV vs GPU Library Analysis</h3>
+        <p>Systematic comparison of OpenCV and GPU-native implementations, identifying performance bottlenecks and proposing targeted optimization strategies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Education</h2>
+      <span class="section-num mono">04</span>
+    </div>
+    <div class="edu-row">
+      <div>
+        <h3>B.Tech in Computer Science</h3>
+        <span class="edu-sub">SASTRA University &middot; Class of 2022</span>
+      </div>
+      <div class="edu-stat">CGPA 8.01 / 10.0</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-rule"></div>
+    <div class="footer-grid">
+      <div>
+        <div class="eyebrow" style="margin-bottom:10px;">Get in touch</div>
+        <p class="footer-note">
+          Based in Chennai, India. Open to conversations about GPU performance engineering, HPC, computer vision,
+          and video codec work.
+        </p>
+      </div>
+      <div class="footer-contacts">
+        <a href="mailto:hazarathkumar.maddisetty@gmail.com">hazarathkumar.maddisetty@gmail.com</a>
+        <span>+91 91824 70820</span>
+        <a href="https://www.linkedin.com/in/hazarath-kumar-maddisetty-54b6a0225/" target="_blank" rel="noopener">linkedin.com/in/hazarath-kumar-maddisetty</a>
+        <a href="https://github.com/HazarathKumarM" target="_blank" rel="noopener">github.com/HazarathKumarM</a>
+        <a href="https://github.com/hazarathkumar13" target="_blank" rel="noopener">github.com/hazarathkumar13</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('printBtn');
+    if (btn) { btn.addEventListener('click', function(){ window.print(); }); }
+  })();
+</script>
